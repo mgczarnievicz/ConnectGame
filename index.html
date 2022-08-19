@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Game</title>
+    <!-- Import Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./font/style.css">
+        <!-- link our Style  -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="wellcome">
+        <h1>CONNECT DOTS</h1>
+        <!-- <button id="board-config-button" type="button">Board Configuration</button>
+        <button id="players-config-button" type="button">Players Configuration</button> -->
+        <a href = #players-config>Players Configuration</a>
+
+        <a href = #board-config>Board Configuration</a>
+    </section>
+
+    <section id="players-config">
+        <h1>PLAYERS</h1>
+        <div id="config-Player1">
+            <h2>Player 1</h2>
+            <p>
+                <label id="" for="name">Name</label>
+                <input type="text" id="player1-name" Value="Juan" />
+            </p>
+            <p>        
+                <label id="" for="player1-color">Color</label>
+                <input type="color" id="player1-color" value="#ff0000">
+            </p>
+        </div>
+
+        <div id="config-Player2">
+            <h2>Player 2</h2>
+            <p>
+                <label id="" for="name">Name</label>
+                <input type="text" id="player2-name"  value="Maria">
+            </p>
+            <p>        
+                <label id="" for="player2-color">Color</label>
+                <input type="color" id="player2-color" value="#4cff00">
+            </p>
+        </div>
+        <div class="fake-button">
+        <br/>
+            <a href = #board-config id="player-config-submit">Save Changes</a>
+
+        </div>
+        <!-- <button type="button" id="one-plyer-config">1 Player</button>
+        <button type="button" id="two-plyer-config">2 Players</button> -->
+    </section>
+
+    <section id="board-config">
+        <h1>BOARD</h1>
+
+        <div id="style-board-config-left">
+            <p>
+                <label  for="row-config">Row</label>
+                <input type="number" id="row-config" min="4" max="15" value="6">
+            </p>
+            <p>
+                <label for="connect-config">Pieces Connected</label>
+                <input type="number" id="connect-config" min="3" max="10" value="4">
+            </p>
+        </div> 
+        <div id="style-board-config-right">
+            <p>
+                <label id="lable-small" for="col-config">Column</label>
+                <input type="number" id="col-config" min="4" max="15" value="7">
+            </p>
+            <p>        
+                <label id="lable-small" for="board-config-color">Board  Color</label>
+                <input type="color" id="board-config-color" value="#545354">
+            </p>
+        </div>
+        <div class="fake-button">
+            <!-- <button type="submit" id="board-config-submit">Save Changes</button>
+            <button type="button" id="board-config-reset">Reset</button> -->
+            <a href = "#game-section" id="lets-play">Let's Play</a>
+            <a href = "#board-config" id="board-config-reset">Reset</a>
+        </div>
+
+    </section>
+    
+
+    <section id="game-section">
+        <div id="player-turn">
+            <h3 id="current-name"> Maria</h3>
+            <h3 id ="player-status"> is your turn</h3>
+            <div id="show-turn"><div id="color-turn"></div></div>
+             <button id="newGame" >New Game</button>
+            
+        </div>
+        <div id="board"></div>
+        
+        <!-- <div id="winner-announce" class=""></div> -->
+       
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

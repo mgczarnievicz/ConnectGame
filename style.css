@@ -1,0 +1,316 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Varela Round", sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+:root {
+    --player1-color: 360;
+    --player2-color: 102;
+    --winner-color: 307;
+    --board-color: #545354;
+}
+
+/* -------------------------------------------------------------
+                    GENERAL SECTION  STYLE
+----------------------------------------------------------------*/
+section {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+button,
+a {
+    position: relative;
+    margin: 20px;
+    padding: 14px 40px;
+    font-size: 20px;
+    border-radius: 12px;
+    background-color: darkmagenta;
+    color: aliceblue;
+    border: 2px solid black;
+    text-decoration: none;
+}
+
+button:hover,
+a:hover,
+.columns:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.513),
+        0 17px 50px 0 rgba(0, 0, 0, 0.409);
+    cursor: pointer;
+}
+
+p {
+    margin: 20px;
+}
+.fake-button {
+    position: relative;
+    display: inline-block;
+    height: 60px;
+    display: block;
+}
+
+/* -------------------------------------------------------------
+                WELLCOME SECTION  STYLE
+----------------------------------------------------------------*/
+
+#wellcome {
+    /* background-color: rgb(16, 168, 117); */
+    background-image: url("https://fondosmil.com/fondo/12853.jpg");
+    padding: 15%;
+}
+
+#wellcome h1 {
+    font-family: "BD Cartoon Shout";
+    font-size: 72px;
+
+    width: 100%;
+    margin-bottom: 100px;
+    font-size: 50px;
+    text-shadow: 8px 8px 5px #d9d9c6;
+}
+
+/* -------------------------------------------------------------
+                PLAYERS CONFIG SECTION  STYLE
+----------------------------------------------------------------*/
+
+#players-config {
+    /* background-color: rgba(132, 223, 122, 0.724); */
+    background-color: rgb(238, 248, 180);
+    padding: 40px;
+    text-align: center;
+}
+
+#config-Player1,
+#config-Player2 {
+    width: 40%;
+    display: inline-block;
+    border: 10px double white;
+    border-radius: 12px;
+    margin: 20px;
+    padding: 20px;
+}
+#players-config h1 {
+    font-size: 40px;
+}
+
+#players-config label {
+    display: inline-block;
+    width: 100px;
+    margin: 10px;
+    font-size: 25px;
+}
+#players-config input {
+    width: 200px;
+    height: 30px;
+    /* margin-right: 60px; */
+}
+
+/* -------------------------------------------------------------
+                BOARD CONFIG SECTION  STYLE
+----------------------------------------------------------------*/
+
+/* align-self */
+#board-config {
+    background-color: rgba(132, 223, 122, 0.724);
+    /* background-color: rgb(238, 248, 180); */
+
+    padding: 8%;
+    font-size: 40px;
+    display: inline-block;
+}
+
+#style-board-config-left {
+    width: 40%;
+    display: inline-block;
+    text-align: right;
+}
+
+#style-board-config-right {
+    width: 40%;
+    display: inline-block;
+    text-align: left;
+}
+
+#board-config input {
+    width: 100px;
+    height: 30px;
+    /* margin-right: 60px; */
+}
+
+#board-config label {
+    display: inline-block;
+    width: 215px;
+    margin: 10px;
+    font-size: 25px;
+}
+
+#board-config #lable-small {
+    width: 160px;
+}
+
+/*-------------------------------------------------------------
+                            GAME SECTION
+---------------------------------------------------------------- */
+
+#game-section {
+    /* background-color: rgb(16, 168, 117); */
+    background-color: linen;
+    padding: 50px;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+#player-turn {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.513),
+        0 17px 50px 0 rgba(0, 0, 0, 0.409);
+}
+#player-turn h3 {
+    margin-top: 10px;
+}
+#show-turn {
+    flex-grow: 1;
+}
+
+#color-turn {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 50%;
+    /* background-color: whitesmoke; */
+}
+
+/*-------------------------------------------------------------
+                            BOARD
+---------------------------------------------------------------- */
+
+#board {
+    display: flex;
+    padding: 20px;
+    flex-grow: 1;
+
+    align-items: center;
+    justify-content: center;
+    /* height: 900px; */
+    /* border: 1px solid black; */
+}
+
+.slot {
+    box-sizing: content-box;
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    /* z-index: 1; */
+    /* We hide the overflow of the whole */
+    overflow: hidden;
+}
+
+.whole {
+    box-sizing: content-box;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /* border: solid 10px rgb(84, 83, 83); */
+
+    /* border: solid 40px rgb(84, 83, 83); */
+    border: solid 40px var(--board-color);
+
+    flex-shrink: 0;
+    z-index: 1;
+    transition-property: transform;
+    transition-duration: 2s;
+    /* background-color: fuchsia; */
+}
+
+.columns {
+}
+
+.currentColumns {
+    /* border: 1px solid black; */
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.513),
+        0 17px 50px 0 rgba(0, 0, 0, 0.409);
+}
+
+/* ---------------------------------------------------------
+                    Players Settings
+----------------------------------------------------------*/
+.player1 {
+    /* background-color: red; */
+    background-color: hsl(var(--player1-color), 100%, 50%);
+    /* ease-in linear */
+    animation: movePly1 0.8s linear;
+}
+.player2 {
+    /* background-color: yellow; */
+    background-color: hsl(var(--player2-color), 100%, 50%);
+    animation: movePly2 0.8s linear;
+}
+
+.winner {
+    /* background-color: hsl(var(--player2-color), 100%, 50%); */
+    animation: winnerColor 0.5s infinite;
+}
+
+/*-------------------------------------------------------- 
+                Animation in the colors 
+--------------------------------------------------------*/
+
+@keyframes movePly1 {
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: hsl(var(--player1-color), 100%, 50%);
+    }
+}
+
+@keyframes movePly2 {
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: hsl(var(--player2-color), 100%, 50%);
+    }
+}
+
+@keyframes winnerColor {
+    from {
+        background-color: hsl(var(--winner-color), 100%, 30%);
+    }
+    to {
+        background-color: hsl(var(--winner-color), 100%, 80%);
+    }
+}
+
+/*-------------------------------------------------------- 
+                Winner Announcement 
+--------------------------------------------------------*/
+
+#winner-announce {
+    width: 700px;
+    height: 70px;
+    margin: 20px;
+    /* background-color: rgb(208, 208, 219); */
+}
