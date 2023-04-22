@@ -1,36 +1,36 @@
 // (function () {
 console.log($);
 // Buttons
-const $submitPlayers = $("#player-config-submit");
-const $resetBoard = $("#board-config-reset");
-const $startGame = $("#lets-play");
-const $newGame = $("#newGame");
+const $submitPlayers = $('#player-config-submit');
+const $resetBoard = $('#board-config-reset');
+const $startGame = $('#lets-play');
+const $newGame = $('#newGame');
 
-//Inuts values
-const $rows_input = $("#row-config");
-const $cols_input = $("#col-config");
-const $piecesConnect_input = $("#connect-config");
-const $boardColor_input = $("#board-config-color");
+//Inputs values
+const $rows_input = $('#row-config');
+const $cols_input = $('#col-config');
+const $piecesConnect_input = $('#connect-config');
+const $boardColor_input = $('#board-config-color');
 
-const $playerColor1_input = $("#player1-color");
-const $playerColor2_input = $("#player2-color");
+const $playerColor1_input = $('#player1-color');
+const $playerColor2_input = $('#player2-color');
 
-const $playerName1_input = $("#player1-name");
-const $playerName2_input = $("#player2-name");
+const $playerName1_input = $('#player1-name');
+const $playerName2_input = $('#player2-name');
 
-const $currentPlayerName = $("#current-name");
-const $playerStatus = $("#player-status");
+const $currentPlayerName = $('#current-name');
+const $playerStatus = $('#player-status');
 
-console.log("$currentPlayerName", $currentPlayerName);
+console.log('$currentPlayerName', $currentPlayerName);
 
 //Our Board div.
-const $board = $("#board");
-const $currentPlayerDisplay = $("#color-turn");
+const $board = $('#board');
+const $currentPlayerDisplay = $('#color-turn');
 
-const $gameSection = $("#game-section");
+const $gameSection = $('#game-section');
 
 //CSS Variables
-const $cssVariables = $(":root");
+const $cssVariables = $(':root');
 
 //For keyboard nos more game.
 let gameOn = false;
@@ -38,43 +38,43 @@ let gameOn = false;
 $newGame.hide();
 $gameSection.hide();
 
-//Creat and initialize with the default values.
-let amountOfRows = parseInt($rows_input.prop("defaultValue"));
-let amountOfColumns = parseInt($cols_input.prop("defaultValue"));
-let numConnectedWinn = parseInt($piecesConnect_input.prop("defaultValue"));
-let boardColor = $boardColor_input.prop("defaultValue");
+//Create and initialize with the default values.
+let amountOfRows = parseInt($rows_input.prop('defaultValue'));
+let amountOfColumns = parseInt($cols_input.prop('defaultValue'));
+let numConnectedWinn = parseInt($piecesConnect_input.prop('defaultValue'));
+let boardColor = $boardColor_input.prop('defaultValue');
 
-let playerColor_1 = $playerColor1_input.prop("defaultValue");
-let playerColor_2 = $playerColor2_input.prop("defaultValue");
+let playerColor_1 = $playerColor1_input.prop('defaultValue');
+let playerColor_2 = $playerColor2_input.prop('defaultValue');
 
-let playerName_1 = $playerName1_input.prop("defaultValue");
-let playerName_2 = $playerName2_input.prop("defaultValue");
+let playerName_1 = $playerName1_input.prop('defaultValue');
+let playerName_2 = $playerName2_input.prop('defaultValue');
 
 hexAToHSLA(playerColor_1);
 hexAToHSLA(playerColor_2);
 
 console.log(
-    "typeof amountOfRows",
+    'typeof amountOfRows',
     typeof amountOfRows,
-    "\ntypeof amountOfColumns",
+    '\ntypeof amountOfColumns',
     typeof amountOfColumns,
-    "\ntypeof numConnectedWinn",
+    '\ntypeof numConnectedWinn',
     typeof numConnectedWinn
 );
 
 console.log(
-    "Default value\n",
-    "amountOfRows",
+    'Default value\n',
+    'amountOfRows',
     amountOfRows,
-    "amountOfColumns",
+    'amountOfColumns',
     amountOfColumns,
-    "numConnectedWinn",
+    'numConnectedWinn',
     numConnectedWinn,
-    "boardColor",
+    'boardColor',
     boardColor
 );
 
-/* Creat an array with the "limits" in the columns. */
+/* Create an array with the "limits" in the columns. */
 let columnsLimits = [];
 let amountSlotUsed = 0;
 let winnerSlotsArray = [];
@@ -88,29 +88,29 @@ function boardLimits() {
         limit += amountOfRows;
     }
     amountSlot = amountOfRows * amountOfColumns;
-    console.log("columnsLimits", columnsLimits);
+    console.log('columnsLimits', columnsLimits);
 }
 
-console.log("amountSlot", amountSlot);
-let currentPlayer = "player1";
+console.log('amountSlot', amountSlot);
+let currentPlayer = 'player1';
 
 function resetGame() {
-    currentPlayer = "player1";
+    currentPlayer = 'player1';
     amountSlotUsed = 0;
     gameOn = true;
 }
 
-let currentPlayerName = "";
+let currentPlayerName = '';
 function switchPlayer() {
-    if (currentPlayer === "player1") {
-        currentPlayer = "player2";
-        $currentPlayerDisplay.removeClass("player1");
-        $currentPlayerDisplay.addClass("player2");
+    if (currentPlayer === 'player1') {
+        currentPlayer = 'player2';
+        $currentPlayerDisplay.removeClass('player1');
+        $currentPlayerDisplay.addClass('player2');
         currentPlayerName = playerName_2;
     } else {
-        currentPlayer = "player1";
-        $currentPlayerDisplay.removeClass("player2");
-        $currentPlayerDisplay.addClass("player1");
+        currentPlayer = 'player1';
+        $currentPlayerDisplay.removeClass('player2');
+        $currentPlayerDisplay.addClass('player1');
         currentPlayerName = playerName_1;
     }
     // currentPlayer = currentPlayer=== "player1" ? "player2" : "player"; hexAToHSLA(H)
@@ -118,7 +118,8 @@ function switchPlayer() {
 }
 
 function firstTurn() {
-    $currentPlayerDisplay.addClass("player1");
+    $currentPlayerDisplay.removeClass('player2');
+    $currentPlayerDisplay.addClass('player1');
     $currentPlayerName.html(playerName_1);
     gameOn = true;
 }
@@ -131,12 +132,12 @@ function newPlayerConfig() {
 /*-------------------------------------------------------------------------- 
                     Event: Reset Board configuration button
     -----------------------------------------------------------------------------*/
-$resetBoard.on("click", function () {
+$resetBoard.on('click', function () {
     //Grab default value and set them in the input
-    amountOfRows = parseInt($rows_input.prop("defaultValue"));
-    amountOfColumns = parseInt($cols_input.prop("defaultValue"));
-    numConnectedWinn = parseInt($piecesConnect_input.prop("defaultValue"));
-    boardColor = $boardColor_input.prop("defaultValue");
+    amountOfRows = parseInt($rows_input.prop('defaultValue'));
+    amountOfColumns = parseInt($cols_input.prop('defaultValue'));
+    numConnectedWinn = parseInt($piecesConnect_input.prop('defaultValue'));
+    boardColor = $boardColor_input.prop('defaultValue');
 
     $rows_input.val(amountOfRows);
     $cols_input.val(amountOfColumns);
@@ -147,7 +148,7 @@ $resetBoard.on("click", function () {
 /*-------------------------------------------------------------------------- 
                     Event: Submit Players configuration button
     -----------------------------------------------------------------------------*/
-$submitPlayers.on("click", function () {
+$submitPlayers.on('click', function () {
     //Grab Players Info.
     boardColor = $boardColor_input.val();
 
@@ -157,8 +158,8 @@ $submitPlayers.on("click", function () {
     playerColor_1 = hexAToHSLA(playerColor_1);
     playerColor_2 = hexAToHSLA(playerColor_2);
 
-    $cssVariables.css("--player1-color", playerColor_1);
-    $cssVariables.css("--player2-color", playerColor_2);
+    $cssVariables.css('--player1-color', playerColor_1);
+    $cssVariables.css('--player2-color', playerColor_2);
 
     playerName_1 = $playerName1_input.val();
     playerName_2 = $playerName2_input.val();
@@ -168,8 +169,8 @@ $submitPlayers.on("click", function () {
 /*-------------------------------------------------------------------------- 
                    Event:  Start Game button
     -----------------------------------------------------------------------------*/
-$startGame.on("click", function () {
-    console.log("Click start Game");
+$startGame.on('click', function () {
+    console.log('Click start Game');
 
     amountOfRows = parseInt($rows_input.val());
     amountOfColumns = parseInt($cols_input.val());
@@ -177,18 +178,18 @@ $startGame.on("click", function () {
 
     // I will have the color in hexa
     boardColor = $boardColor_input.val();
-    $cssVariables.css("--board-color", boardColor);
+    $cssVariables.css('--board-color', boardColor);
 
     //Clear the board.
     $board.empty();
 
-    //Creat the board
+    //Create the board
     for (let i = 0; i < amountOfColumns; i++) {
-        const $col = $("<div></div>").addClass("columns");
+        const $col = $('<div></div>').addClass('columns');
 
         for (let j = 0; j < amountOfRows; j++) {
-            const $slot = $("<div> </div>").addClass("slot");
-            const $whole = $("<div></div>").addClass("whole");
+            const $slot = $('<div> </div>').addClass('slot');
+            const $whole = $('<div></div>').addClass('whole');
 
             $slot.append($whole);
             $col.append($slot);
@@ -196,29 +197,29 @@ $startGame.on("click", function () {
         $board.append($col);
     }
 
-    //Calculate the limmits of the board.
+    //Calculate the limits of the board.
     console.log(
-        "----------------------------------\n        NEW GAME\n------------------------------------------"
+        '----------------------------------\n        NEW GAME\n------------------------------------------'
     );
     boardLimits();
     firstTurn();
     $gameSection.show();
 });
 
-$newGame.on("click", function () {
-    const $slots = $(".slot");
+$newGame.on('click', function () {
+    const $slots = $('.slot');
     for (let i = 0; i < $slots.length; i++) {
         $currentSlot = $slots.eq(i);
         $whole = $currentSlot.children();
-        $whole.removeClass("player1 player2 winner");
+        $whole.removeClass('player1 player2 winner');
     }
     //Add click handler for the Columns
-    $("body").on("click", ".columns", clickedColumns());
+    $('body').on('click', '.columns', clickedColumns());
 
     //Hide the winner display
     $newGame.hide();
     firstTurn();
-    $playerStatus.html("is your turn");
+    $playerStatus.html('is your turn');
 
     //Need to rest the player turn.
     resetGame();
@@ -227,11 +228,11 @@ $newGame.on("click", function () {
 /*-------------------------------------------------------------------------- 
                     Event: COLUMNS  
     -----------------------------------------------------------------------------*/
-$("body").on("click", ".columns", clickedColumns());
+$('body').on('click', '.columns', clickedColumns());
 
 function clickedColumns() {
     return function (e) {
-        console.log("event clicked", e);
+        console.log('event clicked', e);
         const $col = $(e.currentTarget);
         dropPiece($col);
     };
@@ -241,7 +242,7 @@ function clickedColumns() {
                 Event listener: KEYBOARD
     --------------------------------------- */
 // $(document).on("keydown", clickedKey());
-$("body").on("keydown", clickedKey());
+$('body').on('keydown', clickedKey());
 
 let currentColumn_index = 0;
 let newTurn = true;
@@ -249,20 +250,20 @@ let newTurn = true;
 function clickedKey() {
     return function (e) {
         if (gameOn) {
-            const $columns = $(".columns");
+            const $columns = $('.columns');
             switch (e.key) {
-                case "ArrowUp":
-                    console.log("ArrowUp");
+                case 'ArrowUp':
+                    console.log('ArrowUp');
 
                     break;
-                case "ArrowDown":
+                case 'ArrowDown':
                     //Drop pice
-                    console.log("ArrowDown");
+                    console.log('ArrowDown');
                     dropPiece($columns.eq(currentColumn_index));
                     break;
-                case "ArrowLeft":
+                case 'ArrowLeft':
                     //previous Columns
-                    console.log("ArrowLeft");
+                    console.log('ArrowLeft');
                     if (newTurn) {
                         currentColumn_index = $columns.length - 1;
                         newTurn = false;
@@ -275,13 +276,13 @@ function clickedKey() {
 
                     $columns
                         .eq(currentColumn_index + 1)
-                        .removeClass("currentColumns");
+                        .removeClass('currentColumns');
 
-                    $columns.eq(currentColumn_index).addClass("currentColumns");
+                    $columns.eq(currentColumn_index).addClass('currentColumns');
                     break;
-                case "ArrowRight":
+                case 'ArrowRight':
                     //next Columns
-                    console.log("ArrowRight");
+                    console.log('ArrowRight');
                     if (newTurn) {
                         currentColumn_index = 0;
                         newTurn = false;
@@ -295,9 +296,9 @@ function clickedKey() {
 
                     $columns
                         .eq(currentColumn_index - 1)
-                        .removeClass("currentColumns");
+                        .removeClass('currentColumns');
 
-                    $columns.eq(currentColumn_index).addClass("currentColumns");
+                    $columns.eq(currentColumn_index).addClass('currentColumns');
                     break;
                 default:
                     break;
@@ -319,7 +320,7 @@ function dropPiece($col) {
                 if NO -> Move on.
             
             */
-        if (!$whole.hasClass("player1") && !$whole.hasClass("player2")) {
+        if (!$whole.hasClass('player1') && !$whole.hasClass('player2')) {
             $whole.addClass(currentPlayer);
             amountSlotUsed++;
             // See if there is a winner.
@@ -335,7 +336,7 @@ function dropPiece($col) {
                 return;
             }
 
-            console.log("------------------------------------------------");
+            console.log('------------------------------------------------');
             switchPlayer();
             break;
         }
@@ -347,59 +348,59 @@ function dropPiece($col) {
 }
 
 function gameOver(draw) {
-    let answerText = "";
+    let answerText = '';
     let winnerColor;
     let index = 0;
 
-    const $columns = $(".columns");
-    const $slots = $(".slot");
+    const $columns = $('.columns');
+    const $slots = $('.slot');
     let $currentSlot;
     let $whole;
     let audio;
 
     // REVIEW: This the events are different.
-    console.log("GAME OVER!");
+    console.log('GAME OVER!');
     // $columns.off("click");
-    $("body").off("click", ".columns");
+    $('body').off('click', '.columns');
     // $("body").off("keydown", ".columns");
 
     gameOn = false;
 
     // $("#board").off("keydown", clickedKey()); //NOT WORKING
 
-    if (typeof draw !== "undefined") {
+    if (typeof draw !== 'undefined') {
         answerText = draw;
     } else {
-        answerText = "You are the Winner";
-        if (currentPlayer === "player1") {
-            // answerText = "Player 1 Winns";
-            winnerColor = $cssVariables.css("--player1-color");
-            console.log("Player 1: WinnerColor:", winnerColor);
+        answerText = 'You are the Winner';
+        if (currentPlayer === 'player1') {
+            // answerText = "Player 1 Wins";
+            winnerColor = $cssVariables.css('--player1-color');
+            console.log('Player 1: WinnerColor:', winnerColor);
         } else {
-            // answerText = "Player 2 Winns";
-            winnerColor = $cssVariables.css("--player2-color");
-            console.log("Player 2: WinnerColor:", winnerColor);
+            // answerText = "Player 2 Wins";
+            winnerColor = $cssVariables.css('--player2-color');
+            console.log('Player 2: WinnerColor:', winnerColor);
         }
-        console.log("WinnerColor SET:", winnerColor);
-        $cssVariables.css("--winner-color", winnerColor);
+        console.log('WinnerColor SET:', winnerColor);
+        $cssVariables.css('--winner-color', winnerColor);
 
-        winnerColor = $cssVariables.css(" --winner-color");
-        console.log("WinnerColor GET:", winnerColor);
+        winnerColor = $cssVariables.css(' --winner-color');
+        console.log('WinnerColor GET:', winnerColor);
 
         //Go through the winners Slots.
         for (let i = 0; i < winnerSlotsArray.length; i++) {
             index = winnerSlotsArray[i];
             $currentSlot = $slots.eq(index);
             $whole = $currentSlot.children();
-            $whole.addClass("winner");
+            $whole.addClass('winner');
         }
         //Go through the columns and remove the state.
         for (let i = 0; i < $columns.length; i++) {
-            $columns.removeClass("currentColumns");
+            $columns.removeClass('currentColumns');
         }
 
         //Play Sound of winner
-        audio = new Audio("sounds/WinGame.wav");
+        audio = new Audio('sounds/WinGame.wav');
         audio.play();
     }
     // We generate our html
@@ -410,7 +411,7 @@ function gameOver(draw) {
 }
 
 function hotizontalVictory(currentRow) {
-    const $slots = $(".slot");
+    const $slots = $('.slot');
     let $currentSlot;
     let $whole;
     let counter = 0;
@@ -428,23 +429,23 @@ function hotizontalVictory(currentRow) {
         }
 
         if (counter === numConnectedWinn) {
-            console.log("hotizontalVictory:\tWINNER!!");
+            console.log('hotizontalVictory:\tWINNER!!');
             return true;
         }
     }
-    console.log("hotizontalVictory:\tNO Winner");
+    console.log('hotizontalVictory:\tNO Winner');
     return false;
 }
 
 function verticalVictory() {
     /* 
-        1. Set up a counter veriable
+        1. Set up a counter variable
         2. Move through the slots and:
             - increment the counter by 1 if the slot has the class or the current plazer.
-            - reset the counter if it doesnt.
+            - reset the counter if it doesn't.
         3. If the counter is 4 we have a winner.
         */
-    const $slots = $(".slot");
+    const $slots = $('.slot');
 
     let $currentSlot;
     let $whole;
@@ -471,12 +472,12 @@ function verticalVictory() {
         }
 
         if (counter === numConnectedWinn) {
-            console.log("verticalVictory:\tWINNER!!");
+            console.log('verticalVictory:\tWINNER!!');
             return true;
         }
     }
 
-    console.log("verticalVictory:\tNO Winner");
+    console.log('verticalVictory:\tNO Winner');
     /* We return an boolean, true is there is a winner and false otherwise */
     return false;
 }
@@ -533,10 +534,10 @@ function nextPositionDiagonal(
 
 function diagonallVictory() {
     /* 
-        +7 -> be careful that they are un the next colomn the next value.
+        +7 -> be careful that they are un the next column the next value.
         +5 -> be careful that they are in the nest column.
         */
-    const $slots = $(".slot");
+    const $slots = $('.slot');
 
     let $whole;
     let counter = 0;
@@ -549,9 +550,9 @@ function diagonallVictory() {
     for (let i = 0; i < $slots.length; i++) {
         $currentSlot = $slots.eq(i);
         $whole = $currentSlot.children();
-        // First time founding a slot of the courrent Player.
+        // First time founding a slot of the current Player.
         if ($whole.hasClass(currentPlayer)) {
-            // Reset values for the diagonal Seach
+            // Reset values for the diagonal Search
             winnerSlotsArray = [];
             // nextDiagPosition = i;
 
@@ -580,12 +581,11 @@ function diagonallVictory() {
                 nextColumn,
                 counter
             );
-            console.log("Return value ( / )", found);
+            console.log('Return value ( / )', found);
             if (found) {
-                console.log("winnerSlots ( / )", winnerSlotsArray);
+                console.log('winnerSlots ( / )', winnerSlotsArray);
                 return true;
             }
-
 
             /*  \
                      \
@@ -607,7 +607,7 @@ function diagonallVictory() {
             );
             console.log(`Return value od nextPosition ( \ )`, found);
             if (found) {
-                console.log("winnerSlots (  )", winnerSlotsArray);
+                console.log('winnerSlots (  )', winnerSlotsArray);
                 return true;
             }
         }
@@ -620,7 +620,7 @@ function diagonallVictory() {
     }
 }
 
-/* Becuase the way we display the winner que need to convert the input color to hsl values 
+/* Because the way we display the winner que need to convert the input color to hsl values 
     
     thank u: https://css-tricks.com/converting-color-spaces-in-javascript/ */
 
@@ -630,13 +630,13 @@ function hexAToHSLA(H) {
         b = 0;
 
     if (H.length == 4) {
-        r = "0x" + H[1] + H[1];
-        g = "0x" + H[2] + H[2];
-        b = "0x" + H[3] + H[3];
+        r = '0x' + H[1] + H[1];
+        g = '0x' + H[2] + H[2];
+        b = '0x' + H[3] + H[3];
     } else if (H.length == 7) {
-        r = "0x" + H[1] + H[2];
-        g = "0x" + H[3] + H[4];
-        b = "0x" + H[5] + H[6];
+        r = '0x' + H[1] + H[2];
+        g = '0x' + H[3] + H[4];
+        b = '0x' + H[5] + H[6];
     }
 
     // Then to HSL
